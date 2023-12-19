@@ -1,0 +1,38 @@
+﻿@model IEnumerable<UltraPioner.Models.DataBase.Entities.PersonalDate>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="height-100">
+    <h2>Список пользователей</h2>
+    <p><a asp-action="Create">Добавить пользователя</a></p>
+	@* <table class="table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Discription)
+				</th>
+				<th>
+					RoleName
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>@item.Name</td>
+					<td>@item.Discription</td>
+					<td>@item.Role.RoleName</td>
+				</tr>
+			}
+		</tbody>
+	</table> *@
+</div>
+
+
+

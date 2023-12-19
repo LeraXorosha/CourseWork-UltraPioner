@@ -1,0 +1,35 @@
+﻿@model UltraPioner.Models.ViewModel.LoginModel
+@{
+	ViewData["Title"] = "Login";
+}
+
+@if (ViewData.ModelState.ContainsKey("isLoginFailed"))
+{
+	foreach (var err in @ViewData.ModelState["isLoginFailed"].Errors)
+	{
+		<h3>@err.ErrorMessage</h3>
+	}
+}
+
+<div class="wrapper">
+        <div class="logo">
+            <img src="/logoUP.png" alt="">
+        </div>
+        <div class="text-center mt-4 name">
+            UltraPioner
+        </div>
+        <form asp-action="Login" asp-controller="Account" class="p-3 mt-3">
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="Username" id="userName" placeholder="Имя пользователя">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="Password" id="pwd" placeholder="Пароль">
+            </div>
+            <button class="btn mt-3">Войти</button>
+        </form>
+        <div class="text-center fs-6">
+            <strong>Вперёд к целям вместе с нами!</strong>
+        </div>
+    </div>

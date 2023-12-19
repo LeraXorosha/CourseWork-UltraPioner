@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using UltraPioner.Extensions;
 using UltraPioner.Models.DataBase.Entities;
 
 namespace UltraPioner.Models
@@ -42,16 +43,16 @@ namespace UltraPioner.Models
 
             List<PersonalDate> users = new(){
                 new PersonalDate { PersonalDateID = 1, Name = "Красоткин Антон", DateBorn = new DateTime(1997-05-20) , Discription = "Варатарь",
-                    Email = "KrasotkinA@local.dom", Phone = "8(908)345-34-34", RoleID = 2, ClubID = 1, Login = "KrasotkinA", Password = "1"},
+                    Email = "KrasotkinA@local.dom", Phone = "8(908)345-34-34", RoleID = 2, ClubID = 1, Login = "KrasotkinA", Password = "1".ToHash()},
 
                 new PersonalDate { PersonalDateID = 2, Name = "Валерий Петрович", DateBorn = new DateTime(1967-02-13) , Discription = "Администратор клуба",
-                    Email = "admin@local.dom", Phone = "8(908)353-32-94", RoleID = 1, ClubID = 1, Login = "Admin", Password = "admin"},
+                    Email = "admin@local.dom", Phone = "8(908)353-32-94", RoleID = 1, ClubID = 1, Login = "Admin", Password = "admin".ToHash()},
 
                 new PersonalDate { PersonalDateID = 3, Name = "Мёрфи Тревор", DateBorn = new DateTime(1995-07-17) , Discription = "Защитник",
-                    Email = "MerfiT@local.dom", Phone = "8(908)353-32-94", RoleID = 2, ClubID = 1, Login = "MerfiT", Password = "1"},
+                    Email = "MerfiT@local.dom", Phone = "8(908)353-32-94", RoleID = 2, ClubID = 1, Login = "MerfiT", Password = "1".ToHash()},
 
                 new PersonalDate { PersonalDateID = 4, Name = "Маркович Макс", DateBorn = new DateTime(1981-03-01) , Discription = "Видеотренер-аналитик",
-                    Email = "MarcovichM@local.dom", Phone = "8(923)443-62-94", RoleID = 3, ClubID = 1, Login = "MarcovichM", Password = "1"}
+                    Email = "MarcovichM@local.dom", Phone = "8(923)443-62-94", RoleID = 3, ClubID = 1, Login = "MarcovichM", Password = "1".ToHash()}
             };
 
             List<ProfilePlayer> players = new(){

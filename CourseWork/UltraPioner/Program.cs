@@ -1,7 +1,18 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
+using UltraPioner.Models;
+using UltraPioner.Models.DataBase;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<UltraPionerDBContext>(
+	options => options.UseSqlite(GetConnString())
+);
+
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+				.AddCookie();
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -18,6 +29,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
@@ -25,3 +37,12 @@ app.MapControllerRoute(
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+static string GetConnString()
+{
+	var folder = Environment.SpecialFolder.Personal;
+	var path = Environment.GetFolderPath(folder);
+	var dbPath = Path.Join(path, "WebApp-ef-complex.db");
+	var connectionString = $"Data source={dbPath}";
+	return connectionString;
+}

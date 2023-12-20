@@ -21,12 +21,18 @@
         <form asp-action="Login" asp-controller="Account" class="p-3 mt-3">
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-user"></span>
-                <input type="text" name="Username" id="userName" placeholder="Имя пользователя">
+            <label asp-for="Login"></label>
+            <input type="text" asp-for="Login"/>
+           @*  <label asp-for = "Login"> <input type="text" name="Username" id="userName" placeholder="Имя пользователя"></label> *@
+               
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
-                <input type="password" name="Password" id="pwd" placeholder="Пароль">
+            <label asp-for="Password"></label>
+            <input type="password" asp-for="Password" />
+          @*   <label asp-for="Password"><input type="password" name="Password" id="pwd" placeholder="Пароль"></label> *@
             </div>
+            
             <button class="btn mt-3">Войти</button>
         </form>
         <div class="text-center fs-6">

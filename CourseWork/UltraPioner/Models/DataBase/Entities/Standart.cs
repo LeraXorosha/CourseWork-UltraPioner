@@ -2,12 +2,16 @@
 {
 	public class Standart
 	{
-		public int StandartID { get; set; }
+		public int Id { get; set; }
 		public string StandartName { get; set; }
 		public int StandartResult { get; set; }
 
 		//
-		public int TrainerMagazineID { get; set; }
-		public TrainerMagazine TrainerMagazine { get; set; }
+		//public int TrainerMagazineID { get; set; }
+		//public TrainerMagazine TrainerJurnal { get; set; }
+
+		//ProfilePlayer
+		public int  ProfilePlayerId { get; set; }
+		public ProfilePlayer Profile { get; set; }
 	}
 }

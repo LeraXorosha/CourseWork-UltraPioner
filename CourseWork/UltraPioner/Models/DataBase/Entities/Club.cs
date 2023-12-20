@@ -4,7 +4,7 @@
     {
 
         //ДОБАВИТЬ ФОТО КЛУБА
-        public int ClubID { get; set; }
+        public int Id { get; set; }
         public string? ClubName { get; set; }
         public string? ColorProfile { get; set; }
 

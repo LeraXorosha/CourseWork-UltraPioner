@@ -1,6 +1,7 @@
-﻿@model IEnumerable<UltraPioner.Models.DataBase.Entities.PersonalDate>
+﻿@model IList<IGrouping<string, UltraPioner.Models.DataBase.Entities.Standart>>
 @{
-	ViewData["Title"] = "Home Page";
+	Layout = "_LayoutPlayer";
+	ViewData["Title"] = "Player Home Page";
 }
 
 <div class="height-100">
@@ -10,13 +11,16 @@
 		<thead>
 			<tr>
 				<th>
-					@Html.DisplayNameFor(model => model.Name)
+					@* @Html.DisplayNameFor(model => model.StandartName) *@
 				</th>
 				<th>
-					@Html.DisplayNameFor(model => model.Discription)
+					@* @Html.DisplayNameFor(model => model.StandartResult) *@
 				</th>
+				@* 				<th>
+				RoleName
+				</th> *@
 				<th>
-					RoleName
+					Player
 				</th>
 				<th></th>
 			</tr>
@@ -25,9 +29,19 @@
 			@foreach (var item in Model)
 			{
 				<tr>
-					<td>@item.Name</td>
-					<td>@item.Discription</td>
-					<td>@item.Role.RoleName</td>
+					<td>@item.</td>
+					<td>@item.StandartResult</td>
+					@* <td>@item.Role.RoleName</td> *@
+					<td>
+						@item.Profile.PersonalData.Name
+						@* 						@foreach(var s in item.Profile.Standarts)
+					{
+					<dl>
+					<dt>@s.StandartName</dt>
+					<dd>@s.StandartResult</dd>
+					</dl>
+					} *@
+					</td>
 				</tr>
 			}
 		</tbody>

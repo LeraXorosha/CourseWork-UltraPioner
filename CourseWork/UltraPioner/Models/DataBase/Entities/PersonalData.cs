@@ -2,9 +2,9 @@
 
 namespace UltraPioner.Models.DataBase.Entities
 {
-    public class PersonalDate
+    public class PersonalData
     {
-        public int PersonalDateID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateBorn { get; set; }
         public string Discription { get; set; }
@@ -16,11 +16,11 @@ namespace UltraPioner.Models.DataBase.Entities
 
 
         //Role
-        public int RoleID { get; set; }
+        public int RoleId { get; set; }
         public Role Role { get; set; }
 
         //Club
-        public int ClubID { get; set; }
+        public int ClubId { get; set; }
         public Club Club { get; set; }
 
         //Profile

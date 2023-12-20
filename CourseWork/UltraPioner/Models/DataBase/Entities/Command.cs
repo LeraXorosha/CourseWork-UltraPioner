@@ -2,7 +2,7 @@
 {
 	public class Command
 	{
-		public int CommandID { get; set; }
+		public int Id { get; set; }
 		public string CommandName { get; set; }
 
 		public ProfilePlayer Profile { get; set; }

@@ -73,28 +73,28 @@ namespace UltraPioner.Controllers
 				.SingleOrDefaultAsync();
 			if (userToLogin is null)
 			{
-				_logger.LogWarning("At {time} Failed login attempt was made with {login}", DateTime.Now.ToString("u"), loginUser.Login);
-				ModelState.AddModelError("isLoginFailed", "Bad login or email");
+				_logger.LogWarning("В {time} была предпринята неудачная попытка входа в систему с помощью {login}", DateTime.Now.ToString("u"), loginUser.Login);
+				ModelState.AddModelError("Не удалось войти в систему", "Неверный логин");
 				return View(loginUser);
 			}
 			if (userToLogin?.Password != loginUser.Password.ToHash())
 			{
-				_logger.LogWarning("At {time} Failed login attempt was made with {login}", DateTime.Now.ToString("u"), loginUser.Login);
-				ModelState.AddModelError("isLoginFailed", "Bad password");
+				_logger.LogWarning("В {time} была предпринята неудачная попытка входа в систему с помощью {login}", DateTime.Now.ToString("u"), loginUser.Login);
+				ModelState.AddModelError("Не удалось войти в системуd", "Неверный пароль");
 				return View(loginUser);
 			}
 
 			Authenticate(userToLogin);
 			switch (userToLogin.Role.RoleName)
 			{
-				case "Player":
+				case "player":
 					return RedirectToAction("Index", "Player");
 					break;
 			}
 			return RedirectToAction("Index", "Home");
 		}
 
-		private void Authenticate(PersonalDate user)
+		private void Authenticate(PersonalData user)
 		{
 			var claims = new List<Claim>
 			{

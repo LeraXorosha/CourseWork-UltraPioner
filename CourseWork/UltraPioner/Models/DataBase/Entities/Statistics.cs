@@ -2,7 +2,7 @@
 {
 	public class Statistics
 	{
-		public int StatisticID { get; set; }
+		public int Id { get; set; }
 		public int CountGame { get; set; }
 		public int Goals { get; set; }
 		public int Broadcast { get; set; }

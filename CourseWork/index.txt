@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UltraPioner.Models.ViewModels.RecordModel>
+@model IEnumerable<UltraPioner.Models.ViewModels.RecordModel>
 @{
 	Layout = "_LayoutPlayer";
 	ViewData["Title"] = "Player Home Page";

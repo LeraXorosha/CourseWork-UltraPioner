@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using UltraPioner.Models.DataBase.Entities;
-using UltraPioner.Models.ViewModel;
+using UltraPioner.Models.ViewModels;
 using UltraPioner.Models;
 using Microsoft.EntityFrameworkCore;
 using UltraPioner.Extensions;
@@ -66,7 +66,7 @@ namespace UltraPioner.Controllers
 		public async Task<IActionResult> Login(LoginModel loginUser, bool failed = false)
 		{
 
-			var userToLogin = await _db.Users
+			var userToLogin = await _db.PersonalDatas
 				.Where(u =>
 				u.Login == loginUser.Login)
 				.Include(u => u.Role)

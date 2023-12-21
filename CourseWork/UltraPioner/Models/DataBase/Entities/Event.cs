@@ -9,7 +9,7 @@
 
 		//ответственный
 		public int PersonalDateId { get; set; }
-		public PersonalDate personalDate { get; set; }
+		public PersonalData personalDate { get; set; }
 
 	}
 }

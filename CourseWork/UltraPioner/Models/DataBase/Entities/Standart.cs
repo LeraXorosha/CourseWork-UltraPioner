@@ -5,6 +5,7 @@
 		public int Id { get; set; }
 		public string StandartName { get; set; }
 		public int StandartResult { get; set; }
+		public DateTime DateResult { get; set; }
 
 		//
 		//public int TrainerMagazineID { get; set; }

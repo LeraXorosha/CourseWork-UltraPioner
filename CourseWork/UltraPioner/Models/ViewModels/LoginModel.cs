@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace UltraPioner.Models.ViewModel
+namespace UltraPioner.Models.ViewModels
 {
     public class LoginModel
     {

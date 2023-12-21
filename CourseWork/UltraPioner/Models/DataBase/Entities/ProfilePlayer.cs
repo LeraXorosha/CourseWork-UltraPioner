@@ -12,14 +12,14 @@
 
         //PersonalDate
         public int PersonalDateId { get; set; }
-        public PersonalDate PersonalDate { get; set; }
+        public PersonalData PersonalDate { get; set; }
 
         //Statistic
         //public int StatisticID { get; set; }
         //public Statistic Statistics { get; set; }
 
         //Standart
-        public int StandartId { get; set; }
+        //public int StandartId { get; set; }
         public List<Standart> Standarts { get; set; }
 
         //Command

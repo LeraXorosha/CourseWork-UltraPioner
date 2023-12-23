@@ -27,7 +27,7 @@ body {
 
 :root {
     --header-height: 4rem;
-    --nav-width: 88px;
+    --nav-width: 250px;
     --first-color: #02457A;
     --first-color-light: #97CADB;
     --white-color: white;
@@ -89,7 +89,7 @@ a {
     left: -30%;
     width: var(--nav-width);
     height: 100vh;
-    background-color: var(--first-color);
+    background-color: var(--first-color);   
     padding: .5rem 1rem 0 0;
     transition: .5s;
     z-index: var(--z-fixed)

@@ -11,8 +11,8 @@ namespace UltraPioner.Models
         public DbSet<ProfilePlayer> ProfilePlayers { get; set; }
         public DbSet<Club> Clubs { get; set; }
         public DbSet<Standart> Standarts { get; set;}
-
-        public UltraPionerDBContext(DbContextOptions options) : base(options)
+	
+		public UltraPionerDBContext(DbContextOptions options) : base(options)
         {
             Database.EnsureDeleted();
             Database.EnsureCreated();
@@ -72,17 +72,23 @@ namespace UltraPioner.Models
                 new Standart {Id = 1, StandartName = "Отжимания", StandartResult = 56, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
                 new Standart {Id = 2, StandartName = "Пресс", StandartResult = 64, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
                 new Standart {Id = 3, StandartName = "Подтягивание", StandartResult = 32, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
-                new Standart {Id = 4, StandartName = "Кросс 100 м", StandartResult = 10.9 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
+                new Standart {Id = 4, StandartName = "Кросс 100 м", StandartResult = 10.9 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
 
                 new Standart {Id = 5, StandartName = "Отжимания", StandartResult = 89, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
                 new Standart {Id = 6, StandartName = "Пресс", StandartResult = 54,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
                 new Standart {Id = 7, StandartName = "Подтягивание", StandartResult = 12,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
                 new Standart {Id = 8, StandartName = "Кросс 100 м", StandartResult = 12.7 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
 
-                new Standart {Id = 9, StandartName = "Отжимания", StandartResult = 89,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
-                new Standart {Id = 10, StandartName = "Пресс", StandartResult = 95,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 1},
+				new Standart {Id = 13, StandartName = "Отжимания", StandartResult = 189,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2},
+				new Standart {Id = 14, StandartName = "Пресс", StandartResult = 195,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2},
+				new Standart {Id = 15, StandartName = "Подтягивание", StandartResult = 152,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2},
+				new Standart {Id = 16, StandartName = "Кросс 100 м", StandartResult = 114.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
+
+
+				new Standart {Id = 9, StandartName = "Отжимания", StandartResult = 89,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
+                new Standart {Id = 10, StandartName = "Пресс", StandartResult = 95,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
                 new Standart {Id = 11, StandartName = "Подтягивание", StandartResult = 52,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
-                new Standart {Id = 12, StandartName = "Кросс 100 м", StandartResult = 14.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2}
+                new Standart {Id = 12, StandartName = "Кросс 100 м", StandartResult = 14.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3}
             };
 				
 

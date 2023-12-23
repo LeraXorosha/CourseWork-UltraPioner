@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Diagnostics;
 using System.Numerics;
+using System.Security.Claims;
 using System.Text.RegularExpressions;
 using UltraPioner.Models;
 using UltraPioner.Models.DataBase.Entities;
@@ -30,29 +31,42 @@ namespace UltraPioner.Controllers
 					   join profile in _db.ProfilePlayers on standart.ProfilePlayerId equals profile.Id
 					   join player in _db.PersonalDatas on profile.PersonalDateId equals player.Id
 					   orderby standart.StandartResult descending
-					  
+
 					   select new
 					   {
-						   standart.StandartName, 
+						   standart.StandartName,
 						   standart.StandartResult,
-						   PlayerName = player.Name
+						   PlayerName = player.Name,
+						   PlayerLogin = player.Login
 					   };
 
 
-			var result2 = linq.ToList()
+			var bestRecord = linq.ToList()
 				.GroupBy(data => data.StandartName)
-				.Select(g => new RecordModel() 
-				{ 
-					
+				.Select(g => new RecordModel()
+				{
+
 					Name = g.First().PlayerName,
 					StandartName = g.First().StandartName,
-					StandartResult = (int)g.First().StandartResult
+					StandartResult = (int)g.First().StandartResult,
 
 				})
 				.ToList();
 
+			var userStandardsResults = linq.ToList()
+				.Where(result => result.PlayerLogin == User.Identity.Name)
+				.Select(r => new RecordModel()
+				{
+					StandartName = r.StandartName,
+					StandartResult = (int)r.StandartResult
+				})
+				.ToList();
 
-			return View(result2);
+			ViewBag.BestRecord = bestRecord;
+			ViewBag.UserStandardsResults = userStandardsResults;
+
+			return View();
+
 		}
 
     }

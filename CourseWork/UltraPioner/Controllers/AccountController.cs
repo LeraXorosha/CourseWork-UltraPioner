@@ -22,38 +22,6 @@ namespace UltraPioner.Controllers
 			_db = context;
 		}
 
-		//GET: Account/Register
-		//public IActionResult Register()
-		//{
-		//	return View();
-		//}
-
-		//// POST: Account/Register
-		//[HttpPost]
-		//public IActionResult Register(RegisterModel regUser)
-		//{
-		//	if (!ModelState.IsValid || regUser.Password != regUser.ConfirmPassword)
-		//	{
-		//		ModelState.AddModelError("isRegFailed", "Passwords incorrect");
-		//		return View(regUser);
-		//	}
-		//	if (_db.Users.Where(u => u.Login == regUser.Login || u.Login == regUser.Email || u.Email == regUser.Login || u.Email == regUser.Email).Any())
-		//	{
-		//		ModelState.AddModelError("isRegFailed", "Login or Email already taken");
-		//		return View(regUser);
-		//	}
-
-		//	var user = new PersonalDate();
-		//	user.Login = regUser.Login;
-		//	user.Email = regUser.Email;
-		//	user.Password = regUser.Password.ToHash();
-		//	user.RoleID = 1;
-
-		//	_db.Users.Add(user);
-		//	_db.SaveChangesAsync().Wait();
-
-		//	return RedirectToAction(nameof(Login));
-		//}
 
 		// GET: Account/Login
 		public IActionResult Login()

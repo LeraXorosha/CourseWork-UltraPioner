@@ -10,5 +10,7 @@ namespace UltraPioner.Models.ViewModels
         [Required(ErrorMessage = "Введен неверный пароль")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-    }
+
+
+	}
 }

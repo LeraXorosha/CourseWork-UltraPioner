@@ -4,6 +4,8 @@
 	ViewData["Title"] = "Player Home Page";
 }
 <link rel="stylesheet" href="~/css/styleTable.css" asp-append-version="true" />
+<script src="~/js/table.js" asp-append-version="true"></script>
+
 <section>
 	<div class="height-100">
 		<h1>Рекорды за всё время</h1>
@@ -24,12 +26,40 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach (var item in Model)
+					@foreach (var record in ViewBag.BestRecord)
 					{
 						<tr>
-							<td>@item.Name</td>
-							<td>@item.StandartName</td>
-							<td><center>@item.StandartResult</center></td>
+							<td>@record.Name</td>
+							<td>@record.StandartName</td>
+							<td><center>@record.StandartResult</center></td>
+						</tr>
+					}
+				</tbody>
+	
+			</table>
+		</div>
+
+		<h1>@User.Identity.Name</h1>
+		<h1>Мои результаты</h1>
+		<div class="tbl-header">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th>
+							Норматив
+						</th>
+						<th>
+							Результат
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var result in ViewBag.UserStandardsResults)
+					{
+						
+						<tr>
+							<td>@result.StandartName</td>
+							<td><center>@result.StandartResult</center></td>
 						</tr>
 					}
 				</tbody>
@@ -37,5 +67,5 @@
 		</div>
 	</div>
 </section>
-<script src="~/js/table.js" asp-append-version="true"></script>
+
 

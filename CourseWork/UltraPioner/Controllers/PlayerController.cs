@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Diagnostics;
@@ -25,59 +26,32 @@ namespace UltraPioner.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			var result = await _db.Standarts
-				.Join(_db.ProfilePlayers, 
-					s => s.ProfilePlayerId, 
-					p => p.Id, 
-					(s, p) => new
-					{
-						StandartName = s.StandartName,
-						StandartResult = s.StandartResult,
-						ProfilePlayerId = p.Id,
-						UserId = p.PersonalDateId
-					})
-				.Join(_db.PersonalDatas,
-					a => a.UserId,
-					user => user.Id,
-					(a, user) => new
-					{
-						a.StandartName,
-						a.StandartResult,
-						PlayerName = user.Name
-					})
-				.GroupBy(data => data.StandartName)
-				.Select(group => new
-				{
-					Entry = group.Where(d => d.StandartResult == group.Max(e => e.StandartResult)).Single()
-				})
-				.ToListAsync();
-
 			var linq = from standart in _db.Standarts
 					   join profile in _db.ProfilePlayers on standart.ProfilePlayerId equals profile.Id
 					   join player in _db.PersonalDatas on profile.PersonalDateId equals player.Id
 					   orderby standart.StandartResult descending
-					   //group standart by standart.StandartName into g
+					  
 					   select new
 					   {
-						   standart.StandartName, //= g.Key,
-						   standart.StandartResult,//g.OrderByDescending(e => e.StandartResult).First().StandartResult,//g.Max(s => s.StandartResult),
-						   PlayerName = player.Name//g.OrderByDescending(e => e.StandartResult).First().Profile.PersonalDate.Name
+						   standart.StandartName, 
+						   standart.StandartResult,
+						   PlayerName = player.Name
 					   };
-
-			//var group = from standart in _db.Standarts group standart by standart.StandartName ;
 
 
 			var result2 = linq.ToList()
 				.GroupBy(data => data.StandartName)
 				.Select(g => new RecordModel() 
 				{ 
+					
 					Name = g.First().PlayerName,
 					StandartName = g.First().StandartName,
-					StandartResult = g.First().StandartResult,
+					StandartResult = (int)g.First().StandartResult
+
 				})
 				.ToList();
 
-			//return View(maxResult);
+
 			return View(result2);
 		}
 

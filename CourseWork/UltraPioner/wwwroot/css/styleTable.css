@@ -7,8 +7,13 @@
     margin-bottom: 15px;
 }
 
-table {
+.tbl-record {
     width: 800px;
+    table-layout: fixed;
+}
+
+.tbl-myResult {
+    width: 500px;
     table-layout: fixed;
 }
 
@@ -17,7 +22,7 @@ table {
 }
 
 .tbl-content {
-    height: 300px;
+    height: 600px;
     overflow-x: auto;
     margin-top: 0px;
     border: 1px solid rgba(255,255,255,0.3);
@@ -25,24 +30,23 @@ table {
 
 th {
     padding: 30px 15px;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
     font-size: 22px;
     color: #001B48;
     text-transform: uppercase;
-    border-bottom: solid 2px white;
+    border: solid 2px white;
     background-color: rgba(255,255,255,0.6);
 }
 
 td {
     padding: 15px;
     text-align: left;
-    vertical-align: middle;
+    margin-left: 8px vertical-align: middle;
     font-weight: 300;
     font-size: 22px;
     color: #fff;
-    border-bottom: solid 2px white;
-  
+    border: solid 2px white;
 }
 
 
@@ -56,22 +60,39 @@ td {
     font-family: 'Roboto', sans-serif;
 }*/
 
-section {
+.Record {
     width: 800px;
     margin-top: 130px;
-    margin-left:650px;
+    margin-left: 550px;
+    border-radius: 6px;
+}
+
+    .Record tbody tr:nth-child(even) {
+        background: rgba(255,255,255,0.2);
+    }
+
+.myResult {
+    width: 500px;
+    margin-top: -520px;
+    margin-left: -65px;
     border-radius: 6px
-    
 }
 
+    .myResult tbody tr:nth-child(even) {
+        background: rgba(255,255,255,0.2);
+    }
+/* Стили для скролла */
 ::-webkit-scrollbar {
-    width: 6px;
-}
-
+	width: 6px;
+} 
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
 }
 
-::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+tr:hover td {
+    background: #001B48; /* фон строки при наведении */
 }

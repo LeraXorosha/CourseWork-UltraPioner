@@ -88,8 +88,9 @@ namespace UltraPioner.Models
 				new Standart {Id = 9, StandartName = "Отжимания", StandartResult = 89,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
                 new Standart {Id = 10, StandartName = "Пресс", StandartResult = 95,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
                 new Standart {Id = 11, StandartName = "Подтягивание", StandartResult = 52,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
-                new Standart {Id = 12, StandartName = "Кросс 100 м", StandartResult = 14.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3}
-            };
+                new Standart {Id = 12, StandartName = "Кросс 100 м", StandartResult = 14.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3},
+				 new Standart {Id = 17, StandartName = "Кросс 100 мasdasdfsdfsdf", StandartResult = 143.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3}
+			};
 				
 
             

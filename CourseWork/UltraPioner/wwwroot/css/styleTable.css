@@ -17,10 +17,21 @@
     table-layout: fixed;
 }
 
-.tbl-header {
+.tbl-header-record {
     background-color: rgba(255,255,255,0.3);
+    height: 400px;
+    overflow-x: auto;
 }
 
+.tbl-header-myResult {
+    background-color: rgba(255,255,255,0.3);
+    height: 600px;
+    overflow-x: auto;
+}
+
+.tbl-header-myResult tr:hover td {
+    background: #001B48; /* фон строки при наведении */
+}
 .tbl-content {
     height: 600px;
     overflow-x: auto;
@@ -62,7 +73,7 @@ td {
 
 .Record {
     width: 800px;
-    margin-top: 130px;
+    margin-top: 80px;
     margin-left: 550px;
     border-radius: 6px;
 }
@@ -73,7 +84,7 @@ td {
 
 .myResult {
     width: 500px;
-    margin-top: -520px;
+    margin-top: -465px;
     margin-left: -65px;
     border-radius: 6px
 }
@@ -93,6 +104,4 @@ td {
 }
 }
 
-tr:hover td {
-    background: #001B48; /* фон строки при наведении */
-}
+

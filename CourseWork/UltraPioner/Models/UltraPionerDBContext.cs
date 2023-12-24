@@ -69,33 +69,47 @@ namespace UltraPioner.Models
 
             List<Standart> standarts = new()
             {
-                new Standart {Id = 1, StandartName = "Отжимания", StandartResult = 56, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
-                new Standart {Id = 2, StandartName = "Пресс", StandartResult = 64, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
-                new Standart {Id = 3, StandartName = "Подтягивание", StandartResult = 32, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
-                new Standart {Id = 4, StandartName = "Кросс 100 м", StandartResult = 10.9 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1},
+                new Standart {Id = 1, StandartName = "Отжимания", StandartResult = 56, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Max"},
+                new Standart {Id = 2, StandartName = "Пресс", StandartResult = 64, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Max"},
+                new Standart {Id = 3, StandartName = "Подтягивание", StandartResult = 32, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Max"},
+                new Standart {Id = 4, StandartName = "Кросс 100 м/c", StandartResult = 10.9 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Min"},
+				new Standart {Id = 28, StandartName = "Кросс 300 м/c", StandartResult = 37.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Min"},
+				new Standart { Id = 29, StandartName = "Кросс 500 м/c", StandartResult = 61.4, DateResult = new DateTime(2023 - 12 - 21), ProfilePlayerId = 1, TypeStandart = "Min" },
+				new Standart {Id = 30, StandartName = "% ОФП", StandartResult = 100 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Max"},
+				new Standart {Id = 31, StandartName = "% силовых приемов", StandartResult = 76 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Max"},
+				new Standart {Id = 32, StandartName = "% выигранных сбросов", StandartResult = 84 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 1, TypeStandart = "Max"},
 
-                new Standart {Id = 5, StandartName = "Отжимания", StandartResult = 89, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
-                new Standart {Id = 6, StandartName = "Пресс", StandartResult = 54,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
-                new Standart {Id = 7, StandartName = "Подтягивание", StandartResult = 12,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
-                new Standart {Id = 8, StandartName = "Кросс 100 м", StandartResult = 12.7 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
+				new Standart {Id = 5, StandartName = "Отжимания", StandartResult = 89, DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Max"},
+                new Standart {Id = 6, StandartName = "Пресс", StandartResult = 54,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Max"},
+                new Standart {Id = 7, StandartName = "Подтягивание", StandartResult = 12,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Max" },
+                new Standart {Id = 8, StandartName = "Кросс 100 м/c", StandartResult = 12.7 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Min"},
 
-				new Standart {Id = 13, StandartName = "Отжимания", StandartResult = 189,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2},
-				new Standart {Id = 14, StandartName = "Пресс", StandartResult = 195,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2},
-				new Standart {Id = 15, StandartName = "Подтягивание", StandartResult = 152,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2},
-				new Standart {Id = 16, StandartName = "Кросс 100 м", StandartResult = 114.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2},
+				new Standart {Id = 13, StandartName = "Отжимания", StandartResult = 189,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2, TypeStandart = "Max"},
+				new Standart {Id = 14, StandartName = "Пресс", StandartResult = 195,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2, TypeStandart = "Max"},
+				new Standart {Id = 15, StandartName = "Подтягивание", StandartResult = 152,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 2, TypeStandart = "Max"},
+				new Standart {Id = 16, StandartName = "Кросс 100 м/c", StandartResult = 114.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Min"},
+				new Standart {Id = 23, StandartName = "Кросс 300 м/c", StandartResult = 33.2 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Min"},
+				new Standart { Id = 24, StandartName = "Кросс 500 м/c", StandartResult = 56.4, DateResult = new DateTime(2023 - 12 - 21), ProfilePlayerId = 2, TypeStandart = "Min" },
+				new Standart {Id = 25, StandartName = "% ОФП", StandartResult = 56 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3, TypeStandart = "Max"},
+				new Standart {Id = 26, StandartName = "% силовых приемов", StandartResult = 88 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Max"},
+				new Standart {Id = 27, StandartName = "% выигранных сбросов", StandartResult = 43 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 2, TypeStandart = "Max"},
 
 
-				new Standart {Id = 9, StandartName = "Отжимания", StandartResult = 89,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
-                new Standart {Id = 10, StandartName = "Пресс", StandartResult = 95,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
-                new Standart {Id = 11, StandartName = "Подтягивание", StandartResult = 52,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3},
-                new Standart {Id = 12, StandartName = "Кросс 100 м", StandartResult = 14.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3},
-				 new Standart {Id = 17, StandartName = "Кросс 100 мasdasdfsdfsdf", StandartResult = 143.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3}
+				new Standart {Id = 9, StandartName = "Отжимания", StandartResult = 89,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3, TypeStandart = "Max"},
+                new Standart {Id = 10, StandartName = "Пресс", StandartResult = 95,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3, TypeStandart = "Max"},
+                new Standart {Id = 11, StandartName = "Подтягивание", StandartResult = 52,DateResult = new DateTime(2023-11-21), ProfilePlayerId = 3, TypeStandart = "Max"},
+                new Standart {Id = 12, StandartName = "Кросс 100 м/c", StandartResult = 14.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3, TypeStandart = "Min"},
+			    new Standart {Id = 17, StandartName = "Кросс 100 м/c", StandartResult = 11.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3, TypeStandart = "Min"},
+				new Standart {Id = 18, StandartName = "Кросс 300 м/c", StandartResult = 34.4 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3, TypeStandart = "Min"},
+			    new Standart { Id = 19, StandartName = "Кросс 500 м/c", StandartResult = 57.4, DateResult = new DateTime(2023 - 12 - 21), ProfilePlayerId = 3, TypeStandart = "Min" },
+				new Standart {Id = 20, StandartName = "% ОФП", StandartResult = 79 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3, TypeStandart = "Max"},
+				new Standart {Id = 21, StandartName = "% силовых приемов", StandartResult = 56 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3, TypeStandart = "Max"},
+				new Standart {Id = 22, StandartName = "% выигранных сбросов", StandartResult = 98 ,DateResult = new DateTime(2023-12-21), ProfilePlayerId = 3, TypeStandart = "Max"},
 			};
-				
 
-            
-            
-            modelBuilder.Entity<Role>().HasData(roles);
+
+
+			modelBuilder.Entity<Role>().HasData(roles);
             modelBuilder.Entity<PersonalData>().HasData(users);
             modelBuilder.Entity<ProfilePlayer>().HasData(players);
             modelBuilder.Entity<Club>().HasData(clubs);

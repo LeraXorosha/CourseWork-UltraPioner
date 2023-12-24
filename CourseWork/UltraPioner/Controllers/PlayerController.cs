@@ -32,33 +32,37 @@ namespace UltraPioner.Controllers
 					   join player in _db.PersonalDatas on profile.PersonalDateId equals player.Id
 					   orderby standart.StandartResult descending
 
+
 					   select new
 					   {
 						   standart.StandartName,
 						   standart.StandartResult,
+						   standart.TypeStandart,
 						   PlayerName = player.Name,
-						   PlayerLogin = player.Login
+						   PlayerLogin = player.Login,
+						   
 					   };
 
 
 			var bestRecord = linq.ToList()
-				.GroupBy(data => data.StandartName)
+				.GroupBy(data => new { data.StandartName, data.TypeStandart })
 				.Select(g => new RecordModel()
 				{
-
-					Name = g.First().PlayerName,
-					StandartName = g.First().StandartName,
-					StandartResult = (int)g.First().StandartResult,
+					Name = g.Key.TypeStandart == "Max" ? g.First().PlayerName : g.OrderBy(x => x.PlayerName).First().PlayerName,
+					StandartName = g.Key.TypeStandart == "Max" ? g.First().StandartName : g.OrderBy(x => x.StandartName).First().StandartName,
+					StandartResult = g.Key.TypeStandart == "Max" ? (int)g.First().StandartResult : (int)g.OrderBy(x => x.StandartResult).First().StandartResult
 
 				})
 				.ToList();
 
 			var userStandardsResults = linq.ToList()
+		
 				.Where(result => result.PlayerLogin == User.Identity.Name)
+				.GroupBy(data => new { data.StandartName, data.TypeStandart })
 				.Select(r => new RecordModel()
 				{
-					StandartName = r.StandartName,
-					StandartResult = (int)r.StandartResult
+					StandartName = r.Key.TypeStandart == "Max" ? r.First().StandartName : r.OrderBy(x => x.StandartName).First().StandartName,
+					StandartResult = r.Key.TypeStandart == "Max" ? (int)r.First().StandartResult : (int)r.OrderBy(x => x.StandartResult).First().StandartResult
 				})
 				.ToList();
 

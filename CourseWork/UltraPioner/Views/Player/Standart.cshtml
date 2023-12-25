@@ -1,0 +1,58 @@
+﻿@model UltraPioner.Models.ViewModels.MyStandartFilterModel
+@{
+	Layout = "_LayoutPlayer";
+	ViewData["Title"] = "My filter standart";
+}
+<link rel="stylesheet" href="~/css/styleTable.css" asp-append-version="true" />
+<script src="~/js/table.js" asp-append-version="true"></script>
+
+<div class="height-100">
+	<section class="table Record">
+		<h1>Моя статистика нормативов</h1>
+
+		<form method="get">
+			<div class="form-inline">
+				@* <label class="control-label">Норматив: </label>
+				@Html.DropDownList("standartName", Model.StandartName as SelectList,
+									htmlAttributes: new { @class = "form-control" }) *@
+
+				<label class="control-label">Результат: </label>
+				@Html.DropDownList("standartResult", Model.StandartResult as SelectList,
+									htmlAttributes: new { @class = "form-control" })
+
+				<input type="submit" value="Фильтр" class="btn btn-default" />
+			</div>
+		</form>
+
+		<div class="tbl-header-record">
+			<table class="tbl-record" cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th>
+							Норматив
+						</th>
+						<th>
+							Результат
+						</th>
+			
+					</tr>
+				</thead>
+				<tbody @foreach (var item in Model.MyStandarts)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.StandartName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.StandartResult)
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+</div>
+
+

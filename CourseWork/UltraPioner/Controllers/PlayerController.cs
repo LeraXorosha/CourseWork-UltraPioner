@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Diagnostics;
@@ -14,7 +16,7 @@ using UltraPioner.Models.ViewModels;
 
 namespace UltraPioner.Controllers
 {
-	[Authorize(Roles = "admin,player")]
+	[Authorize(Roles = "player")]
 	public class PlayerController : Controller
 	{
 		private readonly ILogger<PlayerController> _logger;
@@ -71,6 +73,49 @@ namespace UltraPioner.Controllers
 
 			return View();
 
+		}
+
+        public IActionResult Standart(string standartName,  int standartResult)
+        {
+			IQueryable<Standart> standards = _db.Standarts;
+			if (!string.IsNullOrWhiteSpace(standartName) && !standartName.Equals("Все"))
+			{
+				standards = standards.Where(s => s.StandartName == standartName);
+			}
+
+			switch (standartResult)
+			{
+				case 0: // "Все" (по результатам) - для удобства выбора всех результатов в фильтре, ID равно 3 для примера в данной реализации
+					break;
+				case 1: // "По убыванию" (по результатам)
+					standards = standards.OrderByDescending(s => s.StandartResult);
+					break;
+				case 2: // "По возрастанию" (по результатам)
+					standards = standards.OrderBy(s => s.StandartResult);
+					break;
+				default: // если фильт не был выбран, то оставим все нормативы без сортировки и без фильтра по результатам
+					break;
+
+			}
+
+			List<Standart> nameStandart = _db.Standarts.ToList();
+			nameStandart.Insert(0, new Standart { StandartName = "Все", Id = 0 });
+
+
+			MyStandartFilterModel msfm = new MyStandartFilterModel
+			{
+				MyStandarts = standards.ToList(),
+				StandartName = new SelectList(nameStandart, "Id", "Name"),
+				StandartResult = new SelectList(new List<string>()
+				{
+					"Все",
+					"По убыванию",
+					"По возрастанию"
+				})
+
+			};
+			
+			return View(msfm);
 		}
 
     }

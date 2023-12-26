@@ -78,7 +78,7 @@ namespace UltraPioner.Controllers
 
 		}
 
-		public IActionResult Standart(string StandartName)
+		public IActionResult Standart(string StandartName, string searchString)
 		{
 			var standarts = from standart in _db.Standarts
 							join profile in _db.ProfilePlayers on standart.ProfilePlayerId equals profile.Id
@@ -88,12 +88,13 @@ namespace UltraPioner.Controllers
 							{
 								StandartName = standart.StandartName,
 								StandartResult = (int)standart.StandartResult,
-								Name = player.Name
+								Name = player.Name,
+								DateResult = standart.DateResult
 
 							};
 
-						
 
+			//filtr
 			if (!String.IsNullOrEmpty(StandartName) && StandartName != "Все")
 			{
 				standarts = standarts.Where(s => s.StandartName == StandartName);
@@ -101,7 +102,40 @@ namespace UltraPioner.Controllers
 
 			ViewData["StandartList"] = new SelectList(_db.Standarts.Select(x => x.StandartName).Distinct());
 
+			//search
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				standarts = standarts.Where(s => s.Name!.Contains(searchString));
+			}
+
 			return View(standarts.ToList());
 		}
-    }
+	}
 }
+
+//сортировка
+//ViewData["CurrentSort"] = sortOrder;
+//ViewData["DateSortParm"] = sortOrder == "date" ? "date_desc" : "date";
+//switch (sortOrder)
+//{
+//	case "date":
+//		standarts = standarts.OrderBy(q => q.DateResult);
+//		break;
+//	case "date_desc":
+//		standarts = standarts.OrderByDescending(q => q.DateResult);
+//		break;
+//	default:
+//		break;
+//}
+
+//поиск
+//if (!string.IsNullOrEmpty(model.Text))
+//{
+//	standarts = standarts.FullTextSearchQuery(model.Text);
+//}
+//else
+//{
+//	standarts = standarts;
+//}
+
+//пагинация

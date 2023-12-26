@@ -8,7 +8,8 @@
 }
 
 .tbl-statistic {
-    width: 600px;
+    padding-top: 30px;
+    width: 800px;
     table-layout: fixed;
 }
 
@@ -25,8 +26,9 @@
 
 .tbl-header-statistic {
     background-color: rgba(255,255,255,0.3);
-    height: 600px;
+    height: 500px;
     overflow-x: auto;
+    padding-top:30px;
 }
 
     .tbl-header-statistic tr:hover td {
@@ -91,9 +93,10 @@ td {
     font-family: 'Roboto', sans-serif;
 }*/
 .Statistic {
-    width: 600px;
-    margin-top: 80px;
-    margin-left: 150px;
+    padding-top: 30px;
+    width: 800px;
+    margin-top: 90px;
+    margin-left: 250px;
     border-radius: 6px;
 }
 
@@ -143,11 +146,22 @@ td {
 }
 
 .col-sm-10{
-    width: 50%;
+    width: 34%;
 
 }
 
-.btn-primary {
+.btn-primary{
+    margin-left:700px;
+    padding:10px;
     background-color: #001B48;
     border-color: #001B48;
 }
+
+    .btn-primary:hover {
+        background-color: midnightblue;
+        border-color: #001B48;
+    }
+
+
+.col-sm-2 {
+    margin-left: 30px;

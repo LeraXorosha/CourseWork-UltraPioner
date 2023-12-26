@@ -21,8 +21,6 @@ namespace UltraPioner.Controllers
 			_logger = logger;
 			_db = context;
 		}
-
-
 		// GET: Account/Login
 		public IActionResult Login()
 		{
@@ -48,7 +46,7 @@ namespace UltraPioner.Controllers
 			if (userToLogin?.Password != loginUser.Password.ToHash())
 			{
 				_logger.LogWarning("В {time} была предпринята неудачная попытка входа в систему с помощью {login}", DateTime.Now.ToString("u"), loginUser.Login);
-				ModelState.AddModelError("Не удалось войти в системуd", "Неверный пароль");
+				ModelState.AddModelError("Не удалось войти в систему", "Неверный пароль");
 				return View(loginUser);
 			}
 

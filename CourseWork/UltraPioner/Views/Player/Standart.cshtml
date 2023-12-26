@@ -8,17 +8,23 @@
 
 <div class="height-100">
 	<section class="table Statistic">
-		<h2>Standart Filter</h2>
+		<h1>Фильтр результатов</h1>
 
 		@using (Html.BeginForm("Standart", "Player", FormMethod.Get))
 		{
 			<div class="form-group row">
-				<label class="col-sm-2 col-form-label">Норматив:</label>
-				<div class="col-sm-10">
-					@Html.DropDownList("StandartName", (IEnumerable<SelectListItem>)ViewData["StandartList"], "Все", new { @class = "form-control" })
-					<input type="submit" value="Применить" class="btn btn-primary ml-2" />
+				<label class="col-sm-3 col-form-label">   Поиск по игроку:</label>
+				<div class="form-group row col-sm-3">
+					<input type="text" name="SearchString" />
 				</div>
+
+				<label class="col-sm-2 col-form-label">   Норматив:</label>
+				<div class="form-group row col-sm-10">
+					@Html.DropDownList("StandartName", (IEnumerable<SelectListItem>)ViewData["StandartList"], "Все", new { @class = "form-control" })
+				</div>
+				
 			</div>
+			<input type="submit" value="Применить" class="btn btn-primary ml-2" />
 		}
 
 		<div class="tbl-header-statistic">
@@ -33,6 +39,9 @@
 						</th>
 						<th>
 							Результат
+						</th>
+						<th>
+							Дата сдачи
 						</th>
 			
 					</tr>
@@ -49,6 +58,9 @@
 							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.StandartResult)
+							</td>
+							<td>
+							@Html.DisplayFor(modelItem => item.DateResult)
 							</td>
 						</tr>
 					}

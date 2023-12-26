@@ -1,4 +1,5 @@
-﻿namespace UltraPioner.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+namespace UltraPioner.Models.ViewModels
 {
 	public class RecordModel
 	{
@@ -8,6 +9,7 @@
 		public int StandartResult { get; set; }
 		public string PlayerLogin { get; set; }
 		public string TypeStandart { get; set; }
-
-    }
+		[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+		public DateTime DateResult { get; set; }
+	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace UltraPioner.Models.DataBase.Entities
 {
@@ -6,7 +7,8 @@ namespace UltraPioner.Models.DataBase.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime DateBorn { get; set; }
+		[DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
+		public DateTime DateBorn { get; set; }
         public string Discription { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }

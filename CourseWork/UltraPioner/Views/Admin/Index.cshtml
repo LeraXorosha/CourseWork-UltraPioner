@@ -1,36 +1,109 @@
-﻿@model IEnumerable<UltraPioner.Models.ViewModels.RecordModel>
+﻿@model IEnumerable<UltraPioner.Models.ViewModels.AdminTableModel>
 @{
 	Layout = "_LayoutAdmin";
 	ViewData["Title"] = "Player Home Page";
 }
+
 <link rel="stylesheet" href="~/css/styleTable.css" asp-append-version="true" />
 <script src="~/js/table.js" asp-append-version="true"></script>
 
 <div class="height-100">
-	<section class="table Record">
-		<h1>Рекорды за всё время</h1>
+	<section class="table Users">
+		<h1>Все пользователи</h1>
+		<div class="tbl-header-users">
+			<table class="tbl-users" cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th>
+							Имя пользователя
+						</th>
+						<th>
+							Роль
+						</th>
+						<th>
+							Должность
+						</th>
+						<th>
+							Логин
+						</th>
+						<th>
+							Пароль
+						</th>
+						<th>
+							Телефон
+						</th>
+						<th>
+							Почта
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Name)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.RoleName)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Discription)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Login)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Password)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Phone)
+							</td>
+							<td>
+								@Html.DisplayFor(modelItem => item.Email)
+							</td>
+						</tr>
+					}
+				</tbody>
+
+			</table>
+		</div>
+
+
+		<h1>Информация об игроках</h1>
 		<div class="tbl-header-record">
 			<table class="tbl-record" cellpadding="0" cellspacing="0" border="0">
 				<thead>
 					<tr>
 						<th>
-							Имя
+							Имя пользователя
 						</th>
 						<th>
-							Норматив
+							Должность
 						</th>
 						<th>
-							Результат
+							Рост
+						</th>
+						<th>
+							Вес
+						</th>
+						<th>
+							Хват
+						</th>
+						<th>
+							Достижения
 						</th>
 
 					</tr>
 				</thead>
 				<tbody>
-					
 				</tbody>
 
 			</table>
 		</div>
+
+
+
 	</section>
 
 	

@@ -41,7 +41,7 @@
 							Результат
 						</th>
 						<th>
-							Дата сдачи
+							<a asp-action="Standart" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.DateResult)</a>
 						</th>
 			
 					</tr>
@@ -70,3 +70,4 @@
 	</section>
 
 </div>
+

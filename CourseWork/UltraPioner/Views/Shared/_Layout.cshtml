@@ -3,21 +3,13 @@
     ViewData["Title"] = "Login";
 }
 
-@if (ViewData.ModelState.ContainsKey("isLoginFailed"))
-{
-    foreach (var err in @ViewData.ModelState["isLoginFailed"].Errors)
-    {
-        <h3>@err.ErrorMessage</h3>
-    }
-}
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication1</title>
+    <title>@ViewData["Title"] - UltraPioner</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />

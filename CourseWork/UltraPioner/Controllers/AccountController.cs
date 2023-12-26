@@ -39,14 +39,14 @@ namespace UltraPioner.Controllers
 				.SingleOrDefaultAsync();
 			if (userToLogin is null)
 			{
-				_logger.LogWarning("В {time} была предпринята неудачная попытка входа в систему с помощью {login}", DateTime.Now.ToString("u"), loginUser.Login);
-				ModelState.AddModelError("Не удалось войти в систему", "Неверный логин");
+				_logger.LogWarning("At {time} Failed login attempt was made with {login}", DateTime.Now.ToString("u"), loginUser.Login);
+				ModelState.AddModelError("isLoginFailed", "Неверный логин");
 				return View(loginUser);
 			}
 			if (userToLogin?.Password != loginUser.Password.ToHash())
 			{
-				_logger.LogWarning("В {time} была предпринята неудачная попытка входа в систему с помощью {login}", DateTime.Now.ToString("u"), loginUser.Login);
-				ModelState.AddModelError("Не удалось войти в систему", "Неверный пароль");
+				_logger.LogWarning("At {time} Failed login attempt was made with {login}", DateTime.Now.ToString("u"), loginUser.Login);
+				ModelState.AddModelError("isLoginFailed", "Неверный пароль");
 				return View(loginUser);
 			}
 
@@ -56,7 +56,10 @@ namespace UltraPioner.Controllers
 				case "player":
 					return RedirectToAction("Index", "Player");
 					break;
-			}
+                case "admin":
+                    return RedirectToAction("Index", "Admin");
+                    break;
+            }
 			return RedirectToAction("Index", "Home");
 		}
 

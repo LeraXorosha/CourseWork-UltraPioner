@@ -3,14 +3,6 @@
 	ViewData["Title"] = "Login";
 }
 
-@if (ViewData.ModelState.ContainsKey("isLoginFailed"))
-{
-	foreach (var err in @ViewData.ModelState["isLoginFailed"].Errors)
-	{
-		<h3>@err.ErrorMessage</h3>
-	}
-}
-
 <div class="wrapper">
         <div class="logo">
             <img src="/logoUP.png" alt="">
@@ -23,19 +15,27 @@
                 <span class="far fa-user"></span>
             <label asp-for="Login"></label>
             <input type="text" asp-for="Login"/>
-           @*  <label asp-for = "Login"> <input type="text" name="Username" id="userName" placeholder="Имя пользователя"></label> *@
+           
                
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
             <label asp-for="Password"></label>
             <input type="password" asp-for="Password" />
-          @*   <label asp-for="Password"><input type="password" name="Password" id="pwd" placeholder="Пароль"></label> *@
+   
             </div>
             
             <button class="btn mt-3">Войти</button>
         </form>
         <div class="text-center fs-6">
             <strong>Вперёд к целям вместе с нами!</strong>
+
+            @if (ViewData.ModelState.ContainsKey("isLoginFailed"))
+            {
+                foreach (var err in @ViewData.ModelState["isLoginFailed"].Errors)
+                {
+                    <h5>@err.ErrorMessage</h5>
+                }
+            }
         </div>
     </div>

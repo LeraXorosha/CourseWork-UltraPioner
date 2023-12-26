@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
+using System.Drawing.Printing;
 using System.Numerics;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
@@ -78,8 +80,10 @@ namespace UltraPioner.Controllers
 
 		}
 
-		public IActionResult Standart(string StandartName, string searchString)
+		public IActionResult Standart (string StandartName, string searchString, string sortOrder, int page = 1)
+
 		{
+
 			var standarts = from standart in _db.Standarts
 							join profile in _db.ProfilePlayers on standart.ProfilePlayerId equals profile.Id
 							join player in _db.PersonalDatas on profile.PersonalDateId equals player.Id
@@ -103,39 +107,28 @@ namespace UltraPioner.Controllers
 			ViewData["StandartList"] = new SelectList(_db.Standarts.Select(x => x.StandartName).Distinct());
 
 			//search
+			ViewData["CurrentFilter"] = searchString;
 			if (!String.IsNullOrEmpty(searchString))
 			{
 				standarts = standarts.Where(s => s.Name!.Contains(searchString));
 			}
 
+            //sort
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            switch (sortOrder)
+            {
+                case "date_desc":
+					standarts = standarts.OrderByDescending(s => s.DateResult);
+                    break;
+                default:
+					standarts = standarts.OrderBy(s => s.DateResult);
+					break;
+			}
+
 			return View(standarts.ToList());
+			//pagging
+			
 		}
 	}
 }
-
-//сортировка
-//ViewData["CurrentSort"] = sortOrder;
-//ViewData["DateSortParm"] = sortOrder == "date" ? "date_desc" : "date";
-//switch (sortOrder)
-//{
-//	case "date":
-//		standarts = standarts.OrderBy(q => q.DateResult);
-//		break;
-//	case "date_desc":
-//		standarts = standarts.OrderByDescending(q => q.DateResult);
-//		break;
-//	default:
-//		break;
-//}
-
-//поиск
-//if (!string.IsNullOrEmpty(model.Text))
-//{
-//	standarts = standarts.FullTextSearchQuery(model.Text);
-//}
-//else
-//{
-//	standarts = standarts;
-//}
-
-//пагинация

@@ -7,6 +7,11 @@
     margin-bottom: 15px;
 }
 
+.tbl-statistic {
+    width: 600px;
+    table-layout: fixed;
+}
+
 .tbl-record {
     width: 800px;
     table-layout: fixed;
@@ -16,6 +21,17 @@
     width: 500px;
     table-layout: fixed;
 }
+
+
+.tbl-header-statistic {
+    background-color: rgba(255,255,255,0.3);
+    height: 600px;
+    overflow-x: auto;
+}
+
+    .tbl-header-statistic tr:hover td {
+        background: #001B48; /* фон строки при наведении */
+    }
 
 .tbl-header-record {
     background-color: rgba(255,255,255,0.3);
@@ -74,6 +90,17 @@ td {
     background: linear-gradient(to right, #25c481, #25b7c4);
     font-family: 'Roboto', sans-serif;
 }*/
+.Statistic {
+    width: 600px;
+    margin-top: 80px;
+    margin-left: 150px;
+    border-radius: 6px;
+}
+
+    .Statistic tbody tr:nth-child(even) {
+        background: rgba(255,255,255,0.2);
+    }
+
 
 .Record {
     width: 800px;
@@ -106,6 +133,21 @@ td {
 ::-webkit-scrollbar-thumb {
 	box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
 }
+
+
+
+.col-form-label {
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
 }
 
+.col-sm-10{
+    width: 50%;
 
+}
+
+.btn-primary {
+    background-color: #001B48;
+    border-color: #001B48;
+}

@@ -7,9 +7,6 @@
 		public double StandartResult { get; set; }
 		public DateTime DateResult { get; set; }
 		public string TypeStandart { get; set; }
-		//
-		//public int TrainerMagazineID { get; set; }
-		//public TrainerMagazine TrainerJurnal { get; set; }
 
 		//ProfilePlayer
 		public int  ProfilePlayerId { get; set; }

@@ -1,4 +1,4 @@
-﻿@model UltraPioner.Models.ViewModels.MyStandartFilterModel
+﻿@model IEnumerable<UltraPioner.Models.ViewModels.RecordModel>
 @{
 	Layout = "_LayoutPlayer";
 	ViewData["Title"] = "My filter standart";
@@ -7,27 +7,27 @@
 <script src="~/js/table.js" asp-append-version="true"></script>
 
 <div class="height-100">
-	<section class="table Record">
-		<h1>Моя статистика нормативов</h1>
+	<section class="table Statistic">
+		<h2>Standart Filter</h2>
 
-		<form method="get">
-			<div class="form-inline">
-				@* <label class="control-label">Норматив: </label>
-				@Html.DropDownList("standartName", Model.StandartName as SelectList,
-									htmlAttributes: new { @class = "form-control" }) *@
-
-				<label class="control-label">Результат: </label>
-				@Html.DropDownList("standartResult", Model.StandartResult as SelectList,
-									htmlAttributes: new { @class = "form-control" })
-
-				<input type="submit" value="Фильтр" class="btn btn-default" />
+		@using (Html.BeginForm("Standart", "Player", FormMethod.Get))
+		{
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">Норматив:</label>
+				<div class="col-sm-10">
+					@Html.DropDownList("StandartName", (IEnumerable<SelectListItem>)ViewData["StandartList"], "Все", new { @class = "form-control" })
+					<input type="submit" value="Применить" class="btn btn-primary ml-2" />
+				</div>
 			</div>
-		</form>
+		}
 
-		<div class="tbl-header-record">
-			<table class="tbl-record" cellpadding="0" cellspacing="0" border="0">
+		<div class="tbl-header-statistic">
+			<table class="tbl-statistic" cellpadding="0" cellspacing="0" border="0">
 				<thead>
 					<tr>
+						<th>
+							Имя игрока
+						</th>
 						<th>
 							Норматив
 						</th>
@@ -37,9 +37,13 @@
 			
 					</tr>
 				</thead>
-				<tbody @foreach (var item in Model.MyStandarts)
+				<tbody>
+					@foreach (var item in Model)
 					{
 						<tr>
+							<td>
+								@Html.DisplayFor(modelItem => item.Name)
+							</td>
 							<td>
 								@Html.DisplayFor(modelItem => item.StandartName)
 							</td>
@@ -54,5 +58,3 @@
 	</section>
 
 </div>
-
-

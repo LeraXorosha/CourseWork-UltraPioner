@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
 using System.Numerics;
 using System.Security.Claims;
@@ -12,6 +13,8 @@ using System.Text.RegularExpressions;
 using UltraPioner.Models;
 using UltraPioner.Models.DataBase.Entities;
 using UltraPioner.Models.ViewModels;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+
 
 
 namespace UltraPioner.Controllers
@@ -42,7 +45,7 @@ namespace UltraPioner.Controllers
 						   standart.TypeStandart,
 						   PlayerName = player.Name,
 						   PlayerLogin = player.Login,
-						   
+
 					   };
 
 
@@ -58,7 +61,7 @@ namespace UltraPioner.Controllers
 				.ToList();
 
 			var userStandardsResults = linq.ToList()
-		
+
 				.Where(result => result.PlayerLogin == User.Identity.Name)
 				.GroupBy(data => new { data.StandartName, data.TypeStandart })
 				.Select(r => new RecordModel()
@@ -75,48 +78,30 @@ namespace UltraPioner.Controllers
 
 		}
 
-        public IActionResult Standart(string standartName,  int standartResult)
-        {
-			IQueryable<Standart> standards = _db.Standarts;
-			if (!string.IsNullOrWhiteSpace(standartName) && !standartName.Equals("Все"))
+		public IActionResult Standart(string StandartName)
+		{
+			var standarts = from standart in _db.Standarts
+							join profile in _db.ProfilePlayers on standart.ProfilePlayerId equals profile.Id
+							join player in _db.PersonalDatas on profile.PersonalDateId equals player.Id
+
+							select new RecordModel()
+							{
+								StandartName = standart.StandartName,
+								StandartResult = (int)standart.StandartResult,
+								Name = player.Name
+
+							};
+
+						
+
+			if (!String.IsNullOrEmpty(StandartName) && StandartName != "Все")
 			{
-				standards = standards.Where(s => s.StandartName == standartName);
+				standarts = standarts.Where(s => s.StandartName == StandartName);
 			}
 
-			switch (standartResult)
-			{
-				case 0: // "Все" (по результатам) - для удобства выбора всех результатов в фильтре, ID равно 3 для примера в данной реализации
-					break;
-				case 1: // "По убыванию" (по результатам)
-					standards = standards.OrderByDescending(s => s.StandartResult);
-					break;
-				case 2: // "По возрастанию" (по результатам)
-					standards = standards.OrderBy(s => s.StandartResult);
-					break;
-				default: // если фильт не был выбран, то оставим все нормативы без сортировки и без фильтра по результатам
-					break;
+			ViewData["StandartList"] = new SelectList(_db.Standarts.Select(x => x.StandartName).Distinct());
 
-			}
-
-			List<Standart> nameStandart = _db.Standarts.ToList();
-			nameStandart.Insert(0, new Standart { StandartName = "Все", Id = 0 });
-
-
-			MyStandartFilterModel msfm = new MyStandartFilterModel
-			{
-				MyStandarts = standards.ToList(),
-				StandartName = new SelectList(nameStandart, "Id", "Name"),
-				StandartResult = new SelectList(new List<string>()
-				{
-					"Все",
-					"По убыванию",
-					"По возрастанию"
-				})
-
-			};
-			
-			return View(msfm);
+			return View(standarts.ToList());
 		}
-
     }
 }

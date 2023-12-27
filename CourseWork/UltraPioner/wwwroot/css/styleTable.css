@@ -7,6 +7,32 @@
     margin-bottom: 15px;
 }
 
+.Users {
+    
+    margin-top: 90px;
+    margin-left: -50px;
+    border-radius: 6px;
+}
+
+    .Users tbody tr:nth-child(even) {
+        background: rgba(255,255,255,0.2);
+    }
+.tbl-users {
+    
+    table-layout: fixed;
+}
+.tbl-header-users{
+    background-color: rgba(255,255,255,0.3);
+    height: 500px;
+    overflow-x: auto;
+}
+
+    .tbl-header-users tr:hover td {
+        background: #001B48; /* фон строки при наведении */
+    }
+
+
+
 .tbl-statistic {
     padding-top: 30px;
     width: 800px;
@@ -92,6 +118,8 @@ td {
     background: linear-gradient(to right, #25c481, #25b7c4);
     font-family: 'Roboto', sans-serif;
 }*/
+
+
 .Statistic {
     padding-top: 30px;
     width: 800px;

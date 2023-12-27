@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using UltraPioner.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using UltraPioner.Models.ViewModels;
+using UltraPioner.Models;
 
 namespace UltraPioner.Controllers
 {
@@ -18,21 +17,20 @@ namespace UltraPioner.Controllers
 		public async Task<IActionResult> Index()
 		{
 			var users = from user in _db.PersonalDatas
-					   join role in _db.Roles on user.RoleId equals role.Id
-					   orderby user.Name descending
+						join role in _db.Roles on user.RoleId equals role.Id
+						orderby user.Name descending
 
 
-					   select new
-					   {
-						   UserName = user.Name,
-						   UserRole = role.RoleName,
-						   UserDiscription = user.Discription,
-						   UserLogin = user.Login,
-						   UserPassword = user.Password,
-						   UserPhone = user.Phone,
-						   UserEmail = user.Email
+						select new
+						{
+							UserName = user.Name,
+							UserRole = role.RoleName,
+							UserDiscription = user.Discription,
+							UserLogin = user.Login,
+							UserPhone = user.Phone,
+							UserEmail = user.Email
 
-					   };
+						};
 
 
 			var anyUsers = users.ToList()
@@ -40,9 +38,8 @@ namespace UltraPioner.Controllers
 				{
 					Name = g.UserName,
 					RoleName = g.UserRole,
-					Discription= g.UserDiscription,
+					Discription = g.UserDiscription,
 					Login = g.UserLogin,
-					Password = g.UserPassword,
 					Phone = g.UserPhone,
 					Email = g.UserEmail
 
@@ -50,6 +47,20 @@ namespace UltraPioner.Controllers
 				.ToList();
 
 			return View(anyUsers);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Delete(int id)
+		{
+			var user = await _db.PersonalDatas.FindAsync(id);
+
+			if (user != null)
+			{
+				_db.PersonalDatas.Remove(user);
+				await _db.SaveChangesAsync();
+			}
+
+			return RedirectToAction("Index");
 		}
 	}
 }

@@ -56,10 +56,10 @@ namespace UltraPioner.Controllers
 				case "player":
 					return RedirectToAction("Index", "Player");
 					break;
-                case "admin":
-                    return RedirectToAction("Index", "Admin");
-                    break;
-            }
+				case "admin":
+					return RedirectToAction("Index", "Admin");
+					break;
+			}
 			return RedirectToAction("Index", "Home");
 		}
 

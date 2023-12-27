@@ -1,4 +1,4 @@
-﻿html {
+﻿/*html {
     font-size: 14px;
 }
 
@@ -141,7 +141,7 @@ h1 {
 
 
 .tbl-users {
-    width: 1200px;
+    width: 100%;
     table-layout: fixed;
 }
 
@@ -154,8 +154,8 @@ h1 {
 }
 
     .tbl-header-users tr:hover td {
-        background: #001B48; /* фон строки при наведении */
-    }
+        background: #001B48;*/ /* фон строки при наведении */
+    /*}
 
 th {
     padding: 30px 15px;
@@ -180,17 +180,17 @@ td {
 
 
 .Users {
-    width: 1200px;
-    margin-top: -465px;
+    width: 1400px;
+    margin-top: -665px;
     margin-left: -65px;
     border-radius: 6px
 }
 
     .Users tbody tr:nth-child(even) {
         background: rgba(255,255,255,0.2);
-    }
+    }*/
 /* Стили для скролла */
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     width: 6px;
 }
 
@@ -228,4 +228,4 @@ td {
 
 
 .col-sm-2 {
-    margin-left: 30px;
+    margin-left: 30px;*/

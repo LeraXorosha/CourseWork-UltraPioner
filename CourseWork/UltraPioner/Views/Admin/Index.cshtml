@@ -9,7 +9,7 @@
 
 <div class="height-100">
 	<section class="table Users">
-		<h1>Все пользователи</h1>
+		<h1>Список пользователей</h1>
 		<div class="tbl-header-users">
 			<table class="tbl-users" cellpadding="0" cellspacing="0" border="0">
 				<thead>
@@ -27,9 +27,6 @@
 							Логин
 						</th>
 						<th>
-							Пароль
-						</th>
-						<th>
 							Телефон
 						</th>
 						<th>
@@ -38,29 +35,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach (var item in Model)
+					@foreach (var user in Model)
 					{
 						<tr>
+							<td>@user.Name</td>
+							<td>@user.RoleName</td>
+							<td>@user.Discription</td>
+							<td>@user.Login</td>
+							<td>@user.Email</td>
+							<td>@user.Phone</td>
 							<td>
-								@Html.DisplayFor(modelItem => item.Name)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.RoleName)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Discription)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Login)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Password)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Phone)
-							</td>
-							<td>
-								@Html.DisplayFor(modelItem => item.Email)
+								<form asp-controller="Admin" asp-action="Delete" method="post">
+									<input type="hidden" name="id" value="@user.Id" />
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</form>
 							</td>
 						</tr>
 					}
@@ -70,7 +58,7 @@
 		</div>
 
 
-		<h1>Информация об игроках</h1>
+		@* <h1>Информация об игроках</h1>
 		<div class="tbl-header-record">
 			<table class="tbl-record" cellpadding="0" cellspacing="0" border="0">
 				<thead>
@@ -100,15 +88,13 @@
 				</tbody>
 
 			</table>
-		</div>
+		</div> *@
 
 
 
 	</section>
 
-	
+
 
 	</section>
 </div>
-
-
